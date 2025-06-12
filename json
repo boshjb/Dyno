@@ -1,0 +1,30 @@
+class DonneeCourse {
+  final String cheval;
+  final double imc;
+  final double ics;
+  final String typologie;
+  final double chaosIndex;
+
+  DonneeCourse({
+    required this.cheval,
+    required this.imc,
+    required this.ics,
+    required this.typologie,
+    required this.chaosIndex,
+  });
+
+  factory DonneeCourse.fromJson(Map<String, dynamic> json) {
+    return DonneeCourse(
+      cheval: json['cheval'],
+      imc: json['IMC'].toDouble(),
+      ics: json['ICS'].toDouble(),
+      typologie: json['typologie'],
+      chaosIndex: json['chaos'].toDouble(),
+    );
+  }
+
+  double score() {
+    // Formule simplifiée pour le moment
+    return imc * 0.4 + ics * 0.3 + chaosIndex * 0.3;
+  }
+}
